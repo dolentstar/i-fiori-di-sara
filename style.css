@@ -1,0 +1,107 @@
+:root {
+  --vetrina: #1f3329;    /* verde scuro della vetrina */
+  --foglia: #3c5a46;
+  --oro: #b58c3e;        /* scritta dorata sul vetro */
+  --oro-chiaro: #e3c98f;
+  --peonia: #a3263d;     /* il rosso delle rose del bouquet */
+  --cipria: #f6ebe8;     /* carta da fiori */
+  --bianco: #fffdfb;
+  --testo: #22251f;
+  --testo-2: #56594f;
+  --titoli: "Gloock", Georgia, serif;
+  --corpo: "Karla", system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
+body { margin: 0; background: var(--cipria); color: var(--testo); font: 400 1.0625rem/1.65 var(--corpo); padding-bottom: 60px; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--peonia); }
+h1, h2, h3 { font-family: var(--titoli); font-weight: 400; line-height: 1.06; margin: 0 0 .45em; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 7.4vw, 4.6rem); }
+h2 { font-size: clamp(2rem, 5.4vw, 3.3rem); }
+h3 { font-size: 1.7rem; }
+p { margin: 0 0 1em; max-width: 60ch; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 3px solid var(--oro); outline-offset: 3px; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--bianco); padding: 8px 12px; z-index: 99; }
+.skip:focus { left: 8px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: 999px; background: var(--vetrina); color: var(--oro-chiaro); font-weight: 700; text-decoration: none; border: 2px solid var(--vetrina); transition: background .2s, color .2s; }
+.btn:hover { background: var(--foglia); border-color: var(--foglia); }
+.btn-linea { background: transparent; color: var(--vetrina); }
+.btn-linea:hover { background: var(--vetrina); color: var(--oro-chiaro); }
+.btn-piccolo { min-height: 40px; padding: 0 16px; background: var(--oro); border-color: var(--oro); color: var(--vetrina); }
+.azioni { display: flex; flex-wrap: wrap; gap: 12px; margin: 10px 0 18px; }
+
+/* testata come la vetrina: fondo scuro e scritta dorata */
+.top { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 20px; padding: 10px 16px; background: var(--vetrina); }
+.insegna { font-family: var(--titoli); font-style: italic; font-size: 1.7rem; color: var(--oro-chiaro); text-decoration: none; margin-right: auto; line-height: 1.1; text-shadow: 0 1px 0 rgba(0,0,0,.4); }
+.menu { display: none; gap: 24px; }
+.menu a { color: var(--cipria); text-decoration: none; font-weight: 700; }
+.menu a:hover { color: var(--oro-chiaro); }
+@media (min-width: 860px) { .menu { display: flex; } .top { padding: 12px 32px; } }
+
+section { padding: 56px 16px; }
+@media (min-width: 860px) { section { padding: 88px 32px; } }
+section > * { max-width: 1120px; margin-left: auto; margin-right: auto; }
+
+.apertura { display: grid; gap: 30px; padding-top: 36px; max-width: 1184px; margin: 0 auto; }
+.apertura > * { margin: 0; max-width: none; }
+.lead { font-size: 1.15rem; color: var(--testo-2); }
+.voto { color: var(--testo-2); }
+.voto strong { font-family: var(--titoli); font-size: 1.5rem; color: var(--testo); font-weight: 400; }
+.apertura-foto img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 4px; outline: 1px solid var(--oro); outline-offset: 10px; }
+@media (min-width: 900px) { .apertura { grid-template-columns: 1.15fr .85fr; align-items: center; gap: 72px; padding: 64px 32px 88px; } }
+
+[data-stato].aperto, [data-stato].chiuso { font-weight: 700; color: var(--testo); white-space: nowrap; }
+[data-stato].aperto::before, [data-stato].chiuso::before { content: ""; display: inline-block; width: .55em; height: .55em; border-radius: 50%; margin: 0 .4em 0 .2em; background: #2f7d4a; }
+[data-stato].chiuso::before { background: var(--peonia); }
+
+/* occasioni: l'elemento memorabile */
+.occasioni { background: var(--vetrina); color: var(--cipria); }
+.occasioni h2 { color: var(--oro-chiaro); }
+.scelte { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 26px; scrollbar-width: none; }
+.scelte button { flex: none; min-height: 46px; padding: 0 20px; border-radius: 999px; border: 1.5px solid var(--oro); background: transparent; color: var(--oro-chiaro); font: 700 1rem var(--corpo); cursor: pointer; }
+.scelte button[aria-selected=true] { background: var(--oro); color: var(--vetrina); }
+.pannello { display: grid; gap: 26px; }
+.pannello h3 { color: #fff; font-size: clamp(1.8rem, 4.5vw, 2.6rem); }
+.pannello .btn { background: var(--oro); border-color: var(--oro); color: var(--vetrina); }
+.pannello .btn-linea { background: transparent; color: var(--oro-chiaro); border-color: var(--oro); }
+.occasioni blockquote { border-left: 2px solid var(--oro); padding: 4px 0 4px 22px; margin: 0; }
+.occasioni blockquote p { font-family: var(--titoli); font-size: clamp(1.4rem, 3.6vw, 1.9rem); line-height: 1.25; color: #fff; }
+blockquote footer { font-size: .9rem; opacity: .85; }
+@media (min-width: 860px) { .pannello { grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; } }
+
+/* matrimoni alla Reggia */
+.matrimoni { display: grid; gap: 36px; max-width: 1184px; margin: 0 auto; }
+.matrimoni > * { margin: 0; max-width: none; }
+.matrimoni-testo blockquote { margin: 0 0 16px; padding: 18px 20px; background: var(--bianco); border-radius: 4px; }
+.matrimoni-testo blockquote p { font-family: var(--titoli); font-size: 1.3rem; line-height: 1.3; margin-bottom: .4em; }
+.matrimoni-testo blockquote footer { color: var(--testo-2); }
+.reggia { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.reggia img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 4px; }
+.reggia .r1 { grid-row: span 2; aspect-ratio: auto; height: 100%; }
+@media (min-width: 900px) { .matrimoni { grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: center; padding: 96px 32px; } }
+
+.dove { display: grid; gap: 30px; background: var(--bianco); }
+.dove > * { margin: 0; max-width: none; }
+.dove-foto img { width: 100%; max-height: 560px; object-fit: cover; object-position: 50% 30%; border-radius: 4px; }
+.stato { margin-bottom: 8px; }
+.orari { border-collapse: collapse; width: 100%; max-width: 340px; margin-bottom: 18px; }
+.orari td { padding: 6px 0; border-bottom: 1px solid #eadad6; }
+.orari td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+.orari tr.oggi td { font-weight: 700; }
+address { font-style: normal; line-height: 1.8; margin-bottom: 8px; }
+.mappa { width: 100%; height: 280px; border: 0; border-radius: 4px; margin-top: 8px; }
+@media (min-width: 860px) { .dove { grid-template-columns: .8fr 1.2fr; gap: 64px; padding: 88px max(32px, calc((100vw - 1120px) / 2)); align-items: start; } }
+
+.piede { background: var(--vetrina); color: var(--cipria); text-align: center; padding: 40px 16px 30px; }
+.piede p { margin: 0 auto 6px; }
+.piede .insegna { font-size: 2.4rem; display: block; margin-bottom: 8px; }
+.piede .demo { font-size: .85rem; opacity: .8; margin-top: 14px; }
+
+.barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: grid; grid-template-columns: repeat(3, 1fr); background: var(--vetrina); }
+.barra a { display: grid; place-items: center; min-height: 56px; color: var(--cipria); text-decoration: none; font-weight: 700; }
+.barra a:nth-child(2) { background: var(--oro); color: var(--vetrina); }
+@media (min-width: 860px) { .barra { display: none; } body { padding-bottom: 0; } }
