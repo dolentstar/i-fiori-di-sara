@@ -1,107 +1,149 @@
 :root {
-  --vetrina: #1f3329;    /* verde scuro della vetrina */
-  --foglia: #3c5a46;
-  --oro: #c29a4d;        /* scritta dorata sul vetro */
-  --oro-chiaro: #e3c98f;
-  --peonia: #a3263d;     /* il rosso delle rose del bouquet */
-  --cipria: #f6ebe8;     /* carta da fiori */
-  --bianco: #fffdfb;
-  --testo: #22251f;
-  --testo-2: #56594f;
-  --titoli: "Gloock", Georgia, serif;
-  --corpo: "Karla", system-ui, sans-serif;
+  --carta: #f3f1f6;
+  --bianco: #ffffff;
+  --prugna: #33203a;
+  --prugna-2: #5e4a63;
+  --anemone: #5a3e9e;
+  --ortensia: #a9b4de;
+  --salvia: #97a48c;
+  --serif: 'Bodoni Moda', 'Didot', Georgia, serif;
+  --sans: 'Hanken Grotesk', system-ui, sans-serif;
 }
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
-body { margin: 0; background: var(--cipria); color: var(--testo); font: 400 1.0625rem/1.65 var(--corpo); padding-bottom: 60px; }
-img { display: block; max-width: 100%; height: auto; }
-a { color: var(--peonia); }
-h1, h2, h3 { font-family: var(--titoli); font-weight: 400; line-height: 1.06; margin: 0 0 .45em; text-wrap: balance; }
-h1 { font-size: clamp(2.4rem, 7.4vw, 4.6rem); }
-h2 { font-size: clamp(2rem, 5.4vw, 3.3rem); }
-h3 { font-size: 1.7rem; }
-p { margin: 0 0 1em; max-width: 60ch; }
+* { box-sizing: border-box; }
 [hidden] { display: none !important; }
-:focus-visible { outline: 3px solid var(--oro); outline-offset: 3px; }
-.skip { position: absolute; left: -999px; top: 8px; background: var(--bianco); padding: 8px 12px; z-index: 99; }
-.skip:focus { left: 8px; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--carta); color: var(--prugna); font: 400 1.0625rem/1.6 var(--sans); padding-bottom: 64px; -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--anemone); }
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.08; margin: 0 0 .45em; text-wrap: balance; letter-spacing: -.01em; }
+h2 { font-size: clamp(2rem, 7.4vw, 3.3rem); }
+h3 { font-size: 1.5rem; }
+p { margin: 0 0 1em; }
+:focus-visible { outline: 3px solid var(--anemone); outline-offset: 3px; }
 
-.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: 999px; background: var(--vetrina); color: var(--oro-chiaro); font-weight: 700; text-decoration: none; border: 2px solid var(--vetrina); transition: background .2s, color .2s; }
-.btn:hover { background: var(--foglia); border-color: var(--foglia); }
-.btn-linea { background: transparent; color: var(--vetrina); }
-.btn-linea:hover { background: var(--vetrina); color: var(--oro-chiaro); }
-.btn-piccolo { min-height: 40px; padding: 0 16px; background: var(--oro); border-color: var(--oro); color: var(--vetrina); }
-.azioni { display: flex; flex-wrap: wrap; gap: 12px; margin: 10px 0 18px; }
+/* bottoni */
+.azioni { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 18px; }
+.bott { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; background: var(--anemone); color: #fff; border: 2px solid var(--anemone); border-radius: 999px; font-weight: 600; text-decoration: none; }
+.bott:hover { background: #48307f; border-color: #48307f; }
+.bott.vuoto { background: transparent; color: var(--anemone); }
+.bott.vuoto:hover { background: rgba(90,62,158,.08); }
 
-/* testata come la vetrina: fondo scuro e scritta dorata */
-.top { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 20px; padding: 10px 16px; background: var(--vetrina); }
-.insegna { font-family: var(--titoli); font-style: italic; font-size: 1.7rem; color: var(--oro-chiaro); text-decoration: none; margin-right: auto; line-height: 1.1; text-shadow: 0 1px 0 rgba(0,0,0,.4); }
-.menu { display: none; gap: 24px; }
-.menu a { color: var(--cipria); text-decoration: none; font-weight: 700; }
-.menu a:hover { color: var(--oro-chiaro); }
-@media (min-width: 860px) { .menu { display: flex; } .top { padding: 12px 32px; } }
+/* testata */
+.top { position: absolute; z-index: 5; inset: 0 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; color: #fff; }
+.marchio { font-family: var(--serif); font-size: 1.25rem; color: #fff; text-decoration: none; text-shadow: 0 1px 12px rgba(0,0,0,.35); }
+.top nav { display: none; gap: 26px; }
+.top nav a { color: var(--prugna); text-decoration: none; font-size: .95rem; }
+.top nav a:hover { color: var(--anemone); }
 
-section { padding: 56px 16px; }
-@media (min-width: 860px) { section { padding: 88px 32px; } }
-section > * { max-width: 1120px; margin-left: auto; margin-right: auto; }
+/* apertura: foto piena sul telefono, poi il testo */
+.apertura { display: grid; }
+.ap-foto { margin: 0; position: relative; height: 46svh; min-height: 300px; overflow: hidden; }
+.ap-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+.ap-foto::after { content: ''; position: absolute; inset: 0 0 auto; height: 90px; background: linear-gradient(rgba(20,10,25,.45), transparent); }
+.ap-testo { padding: 28px 16px 48px; }
+h1 { font-size: clamp(2.7rem, 11.5vw, 5.6rem); font-weight: 400; margin-bottom: .3em; white-space: nowrap; }
+.sotto { font-size: 1.12rem; max-width: 40ch; color: var(--prugna-2); }
+.premi { font-size: .95rem; color: var(--prugna-2); margin: 0; padding-left: 14px; border-left: 2px solid var(--ortensia); }
 
-.apertura { display: grid; gap: 30px; padding-top: 36px; max-width: 1184px; margin: 0 auto; }
-.apertura > * { margin: 0; max-width: none; }
-.lead { font-size: 1.15rem; color: var(--testo-2); }
-.voto { color: var(--testo-2); }
-.voto strong { font-family: var(--titoli); font-size: 1.5rem; color: var(--testo); font-weight: 400; }
-.apertura-foto img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 4px; outline: 1px solid var(--oro); outline-offset: 10px; }
-@media (min-width: 900px) { .apertura { grid-template-columns: 1.15fr .85fr; align-items: center; gap: 72px; padding: 64px 32px 88px; } }
+/* la navata */
+.navata-sez { background: var(--bianco); padding: 56px 16px 64px; }
+.nav-intro p { max-width: 46ch; color: var(--prugna-2); }
+.nav-corpo { display: grid; gap: 16px; margin-top: 20px; }
+.pianta { position: relative; width: min(100%, 272px); margin: 0 auto; }
+@media (min-width: 760px) { .pianta { width: min(100%, 340px); } }
+.pianta svg { width: 100%; height: auto; display: block; }
+.muro { fill: var(--carta); stroke: var(--prugna); stroke-width: 2.5; }
+.tappeto { fill: #e6e2ef; }
+.banchi rect { fill: #d9d2c9; }
+.altare { fill: var(--prugna); }
+.sedia { fill: #c9c0b4; }
+.fiori circle, .fiorellini circle { fill: var(--ortensia); transition: fill .25s, r .25s; }
+.acceso circle { fill: var(--anemone); }
+.pianta text { font: 500 11px var(--sans); fill: var(--prugna-2); }
+.punto {
+  position: absolute; transform: translate(-50%, -50%); width: 38px; height: 38px; border-radius: 50%;
+  border: 2px solid var(--anemone); background: var(--bianco); color: var(--anemone); font: 600 1rem var(--sans); cursor: pointer;
+  box-shadow: 0 4px 12px -4px rgba(51,32,58,.4);
+}
+.punto[aria-pressed="true"] { background: var(--anemone); color: #fff; }
+.scheda { background: var(--carta); padding: 18px 18px; border-radius: 14px; }
+.s-num { font-size: .9rem; color: var(--prugna-2); margin-bottom: .3em; }
+.scheda h3 { font-size: 1.8rem; color: var(--anemone); }
+.s-txt { font-size: 1.05rem; min-height: 3.2em; margin-bottom: .8em; }
+.avanti { min-height: 48px; padding: 0 20px; border-radius: 999px; border: 2px solid var(--prugna); background: transparent; color: var(--prugna); font: 600 1rem var(--sans); cursor: pointer; }
+.avanti:hover { background: var(--prugna); color: #fff; }
+.s-nota { font-size: .92rem; color: var(--prugna-2); margin: 22px 0 0; padding-top: 16px; border-top: 1px solid #ddd6e6; }
 
-[data-stato].aperto, [data-stato].chiuso { font-weight: 700; color: var(--testo); white-space: nowrap; }
-[data-stato].aperto::before, [data-stato].chiuso::before { content: ""; display: inline-block; width: .55em; height: .55em; border-radius: 50%; margin: 0 .4em 0 .2em; background: #2f7d4a; }
-[data-stato].chiuso::before { background: var(--peonia); }
+/* matrimoni */
+.nozze { padding: 56px 0 64px; }
+.nozze h2, .realizziamo, .tempo { padding: 0 16px; }
+.striscia { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 8px 16px 14px; scrollbar-width: thin; }
+.striscia img { flex: 0 0 72%; max-width: 360px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 180px 180px 10px 10px; scroll-snap-align: start; }
+.realizziamo { display: grid; gap: 22px; margin-top: 36px; }
+.realizziamo h3 { color: var(--anemone); margin-bottom: .25em; }
+.realizziamo p { margin: 0; max-width: 44ch; }
+.tempo { margin-top: 30px; font-family: var(--serif); font-size: 1.3rem; line-height: 1.35; max-width: 34ch; }
 
-/* occasioni: l'elemento memorabile */
-.occasioni { background: var(--vetrina); color: var(--cipria); }
-.occasioni h2 { color: var(--oro-chiaro); }
-.scelte { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 26px; scrollbar-width: none; }
-.scelte button { flex: none; min-height: 46px; padding: 0 20px; border-radius: 999px; border: 1.5px solid var(--oro); background: transparent; color: var(--oro-chiaro); font: 700 1rem var(--corpo); cursor: pointer; }
-.scelte button[aria-selected=true] { background: var(--oro); color: var(--vetrina); }
-.pannello { display: grid; gap: 26px; }
-.pannello h3 { color: #fff; font-size: clamp(1.8rem, 4.5vw, 2.6rem); }
-.pannello .btn { background: var(--oro); border-color: var(--oro); color: var(--vetrina); }
-.pannello .btn-linea { background: transparent; color: var(--oro-chiaro); border-color: var(--oro); }
-.occasioni blockquote { border-left: 2px solid var(--oro); padding: 4px 0 4px 22px; margin: 0; }
-.occasioni blockquote p { font-family: var(--titoli); font-size: clamp(1.4rem, 3.6vw, 1.9rem); line-height: 1.25; color: #fff; }
-blockquote footer { font-size: .9rem; opacity: .85; }
-@media (min-width: 860px) { .pannello { grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; } }
+/* parole */
+.parole { background: var(--prugna); color: #f4eef6; padding: 64px 16px; }
+blockquote { margin: 0; }
+cite { font-style: normal; font-size: .95rem; color: var(--ortensia); }
+.grande p { font-family: var(--serif); font-size: clamp(1.45rem, 5.6vw, 2.3rem); line-height: 1.28; margin-bottom: .6em; max-width: 34ch; }
+.altre { display: grid; gap: 28px; margin-top: 44px; }
+.altre blockquote { border-top: 1px solid rgba(169,180,222,.4); padding-top: 16px; }
+.altre p { margin-bottom: .5em; }
 
-/* matrimoni alla Reggia */
-.matrimoni { display: grid; gap: 36px; max-width: 1184px; margin: 0 auto; }
-.matrimoni > * { margin: 0; max-width: none; }
-.matrimoni-testo blockquote { margin: 0 0 16px; padding: 18px 20px; background: var(--bianco); border-radius: 4px; }
-.matrimoni-testo blockquote p { font-family: var(--titoli); font-size: 1.3rem; line-height: 1.3; margin-bottom: .4em; }
-.matrimoni-testo blockquote footer { color: var(--testo-2); }
-.reggia { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.reggia img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 4px; }
-.reggia .r1 { grid-row: span 2; aspect-ratio: auto; height: 100%; }
-@media (min-width: 900px) { .matrimoni { grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: center; padding: 96px 32px; } }
+/* negozi */
+.negozi { padding: 56px 16px 72px; }
+.neg-intro { max-width: 48ch; color: var(--prugna-2); }
+.lista-negozi { display: grid; gap: 14px; margin-top: 26px; }
+.negozio { background: var(--bianco); border-radius: 14px; padding: 22px 20px; border-top: 4px solid var(--ortensia); }
+.negozio h3 { margin-bottom: .1em; }
+.zona { color: var(--prugna-2); font-size: .95rem; margin-bottom: .7em; }
+.stato { font-weight: 600; font-size: .98rem; margin-bottom: .5em; }
+[data-stato]::before { content: ''; display: inline-block; width: .6em; height: .6em; border-radius: 50%; margin-right: .45em; background: #aaa; }
+[data-stato].aperto::before { background: #3c8a55; }
+[data-stato].chiuso::before { background: #b04a5a; }
+.ore { font-size: .98rem; color: var(--prugna-2); }
+.link { display: flex; gap: 10px; flex-wrap: wrap; margin: 0; }
+.link a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 2px solid var(--anemone); text-decoration: none; font-weight: 600; }
+.link a:first-child { background: var(--anemone); color: #fff; }
 
-.dove { display: grid; gap: 30px; background: var(--bianco); }
-.dove > * { margin: 0; max-width: none; }
-.dove-foto img { width: 100%; max-height: 560px; object-fit: cover; object-position: 50% 30%; border-radius: 4px; }
-.stato { margin-bottom: 8px; }
-.orari { border-collapse: collapse; width: 100%; max-width: 340px; margin-bottom: 18px; }
-.orari td { padding: 6px 0; border-bottom: 1px solid #eadad6; }
-.orari td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
-.orari tr.oggi td { font-weight: 700; }
-address { font-style: normal; line-height: 1.8; margin-bottom: 8px; }
-.mappa { width: 100%; height: 280px; border: 0; border-radius: 4px; margin-top: 8px; }
-@media (min-width: 860px) { .dove { grid-template-columns: .8fr 1.2fr; gap: 64px; padding: 88px max(32px, calc((100vw - 1120px) / 2)); align-items: start; } }
+footer { background: #24162a; color: #d8cfe0; padding: 32px 16px 36px; font-size: .92rem; }
+footer p { margin: 0 0 .4em; }
+.f-marchio { font-family: var(--serif); font-size: 1.4rem; color: #fff; }
+.demo { opacity: .7; }
 
-.piede { background: var(--vetrina); color: var(--cipria); text-align: center; padding: 40px 16px 30px; }
-.piede p { margin: 0 auto 6px; }
-.piede .insegna { font-size: 2.4rem; display: block; margin-bottom: 8px; }
-.piede .demo { font-size: .85rem; opacity: .8; margin-top: 14px; }
+.barra { position: fixed; z-index: 30; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: 1.4fr 1fr; background: var(--bianco); border-top: 1px solid #ddd6e6; }
+.barra a { display: flex; align-items: center; justify-content: center; min-height: 56px; padding-bottom: env(safe-area-inset-bottom); font-weight: 600; text-decoration: none; color: var(--anemone); }
+.barra a:first-child { background: var(--anemone); color: #fff; }
 
-.barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: grid; grid-template-columns: repeat(3, 1fr); background: var(--vetrina); }
-.barra a { display: grid; place-items: center; min-height: 56px; color: var(--cipria); text-decoration: none; font-weight: 700; }
-.barra a:nth-child(2) { background: var(--oro); color: var(--vetrina); }
-@media (min-width: 860px) { .barra { display: none; } body { padding-bottom: 0; } }
+/* tablet e desktop */
+@media (min-width: 760px) {
+  .top { position: sticky; top: 0; background: rgba(243,241,246,.92); backdrop-filter: blur(8px); padding: 14px 40px; }
+  .marchio { color: var(--prugna); text-shadow: none; }
+  .top nav { display: flex; }
+  .apertura { grid-template-columns: 1fr 1fr; min-height: calc(100svh - 58px); align-items: stretch; }
+  .ap-foto { order: 2; height: auto; min-height: 0; }
+  .ap-foto::after { display: none; }
+  .ap-testo { align-self: center; padding: 48px 40px; }
+  .navata-sez, .negozi { padding: 96px 40px; }
+  .nav-corpo { grid-template-columns: minmax(0, 360px) minmax(0, 440px); justify-content: start; gap: 56px; align-items: center; }
+  .nav-intro, .nav-corpo, .nozze > *, .parole > *, .negozi > * { max-width: 1120px; margin-left: auto; margin-right: auto; }
+  .nav-corpo { justify-content: center; }
+  .nozze { padding: 96px 0; }
+  .nozze h2, .realizziamo, .tempo { padding: 0 40px; }
+  .striscia { padding: 8px 40px 16px; }
+  .striscia img { flex-basis: 300px; }
+  .realizziamo { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
+  .parole { padding: 96px 40px; }
+  .altre { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
+  .lista-negozi { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  footer { padding: 36px 40px; }
+  body { padding-bottom: 0; }
+  .barra { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
