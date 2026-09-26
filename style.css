@@ -38,7 +38,7 @@ p { margin: 0 0 1em; }
 /* apertura: foto piena sul telefono, poi il testo */
 .apertura { display: grid; }
 .ap-foto { margin: 0; position: relative; height: 46svh; min-height: 300px; overflow: hidden; }
-.ap-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+.ap-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
 .ap-foto::after { content: ''; position: absolute; inset: 0 0 auto; height: 90px; background: linear-gradient(rgba(20,10,25,.45), transparent); }
 .ap-testo { padding: 28px 16px 48px; }
 h1 { font-size: clamp(2.7rem, 11.5vw, 5.6rem); font-weight: 400; margin-bottom: .3em; white-space: nowrap; }
@@ -47,6 +47,8 @@ h1 { font-size: clamp(2.7rem, 11.5vw, 5.6rem); font-weight: 400; margin-bottom: 
 
 /* la navata */
 .navata-sez { background: var(--bianco); padding: 56px 16px 64px; }
+.nav-foto { margin: -56px -16px 32px; }
+.nav-foto img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 .nav-intro p { max-width: 46ch; color: var(--prugna-2); }
 .nav-corpo { display: grid; gap: 16px; margin-top: 20px; }
 .pianta { position: relative; width: min(100%, 272px); margin: 0 auto; }
@@ -128,6 +130,8 @@ footer p { margin: 0 0 .4em; }
   .ap-foto::after { display: none; }
   .ap-testo { align-self: center; padding: 48px 40px; }
   .navata-sez, .negozi { padding: 96px 40px; }
+  .nav-foto { margin: -96px -40px 64px; }
+  .nav-foto img { aspect-ratio: 21 / 8; }
   .nav-corpo { grid-template-columns: minmax(0, 360px) minmax(0, 440px); justify-content: start; gap: 56px; align-items: center; }
   .nav-intro, .nav-corpo, .nozze > *, .parole > *, .negozi > * { max-width: 1120px; margin-left: auto; margin-right: auto; }
   .nav-corpo { justify-content: center; }
